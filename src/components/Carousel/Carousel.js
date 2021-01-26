@@ -295,7 +295,7 @@ class Carousel extends Component {
       { width: sliderWidth, flexDirection: 'row' }
     ]
     const contentContainerStyle = {
-      paddingLeft: oneColumn ? 16 : 8,
+      paddingLeft: 16,
       paddingTop: 8,
       paddingBottom: 8
     }
