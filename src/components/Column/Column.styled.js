@@ -26,7 +26,7 @@ const RowContainer = styled.View`
   alignItems: center;
   paddingVertical: 18;
   paddingHorizontal: 10;
-  justifyContent:center;
+  justifyContent: flex-start;
 
 `
 
