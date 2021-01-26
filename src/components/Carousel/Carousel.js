@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Dimensions } from 'react-native'
+import { ScrollView } from 'react-native'
 import {
   array,
   bool,
@@ -10,8 +10,6 @@ import { deviceWidth, ios } from '../../constants'
 import { ItemWrapper } from './Carousel.styled'
 
 const INITIAL_ACTIVE_ITEM = 0
-
-const {width} = Dimensions.get('window');
 
 class Carousel extends Component {
   constructor(props) {
@@ -100,19 +98,21 @@ class Carousel extends Component {
 
   getKeyExtractor = (item, index) => `scrollview-item-${index}`
 
-  getScrollOffset = event => 0
+  getScrollOffset = event => (event && event.nativeEvent && event.nativeEvent.contentOffset
+    && event.nativeEvent.contentOffset.x) || 0
 
   getCenter = (offset) => {
     const {
+      itemWidth,
       sliderWidth
     } = this.props
-    let itemWidth = width - 40
+
     return offset + sliderWidth / 2 - (sliderWidth - itemWidth) / 2
   }
 
   getActiveItem = (offset) => {
     const center = this.getCenter(offset)
-    const centerOffset = 0
+    const centerOffset = 20
 
     for (let i = 0; i < this.positions.length; i += 1) {
       const { start, end } = this.positions[i]
@@ -132,8 +132,9 @@ class Carousel extends Component {
   initPositions = (props = this.props) => {
     const {
       data,
+      itemWidth
     } = props
-    let itemWidth = width - 40
+
     if (!data || !data.length) {
       return
     }
@@ -223,7 +224,7 @@ class Carousel extends Component {
   }
 
   snapToItem = (index) => {
-    let itemWidth = width - 40
+    const { itemWidth } = this.props
     this.activeItem = index
 
     if (index !== this.previousActiveItem) {
