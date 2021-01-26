@@ -100,7 +100,7 @@ class Carousel extends Component {
 
   getKeyExtractor = (item, index) => `scrollview-item-${index}`
 
-  getScrollOffset = 0
+  getScrollOffset = event => 0
 
   getCenter = (offset) => {
     const {
