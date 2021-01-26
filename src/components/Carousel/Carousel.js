@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, Dimensions } from 'react-native'
 import {
   array,
   bool,
@@ -10,6 +10,8 @@ import { deviceWidth, ios } from '../../constants'
 import { ItemWrapper } from './Carousel.styled'
 
 const INITIAL_ACTIVE_ITEM = 0
+
+const {width} = Dimensions.get('window');
 
 class Carousel extends Component {
   constructor(props) {
@@ -103,10 +105,9 @@ class Carousel extends Component {
 
   getCenter = (offset) => {
     const {
-      itemWidth,
       sliderWidth
     } = this.props
-
+    let itemWidth = width - 40
     return offset + sliderWidth / 2 - (sliderWidth - itemWidth) / 2
   }
 
@@ -132,9 +133,8 @@ class Carousel extends Component {
   initPositions = (props = this.props) => {
     const {
       data,
-      itemWidth
     } = props
-
+    let itemWidth = width - 40
     if (!data || !data.length) {
       return
     }
@@ -224,7 +224,7 @@ class Carousel extends Component {
   }
 
   snapToItem = (index) => {
-    const { itemWidth } = this.props
+    let itemWidth = width - 40
     this.activeItem = index
 
     if (index !== this.previousActiveItem) {
