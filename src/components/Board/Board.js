@@ -369,7 +369,7 @@ class Board extends React.Component {
               />
             )}
             sliderWidth={deviceWidth}
-            itemWidth={deviceWidth - 40}
+            itemWidth={CARD_WIDTH}
             oneColumn={boardRepository.columns().length === 1}
           />
 
