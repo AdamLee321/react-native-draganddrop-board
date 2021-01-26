@@ -112,7 +112,7 @@ class Carousel extends Component {
 
   getActiveItem = (offset) => {
     const center = this.getCenter(offset)
-    const centerOffset = 0
+    const centerOffset = 20
 
     for (let i = 0; i < this.positions.length; i += 1) {
       const { start, end } = this.positions[i]
@@ -295,7 +295,7 @@ class Carousel extends Component {
       { width: sliderWidth, flexDirection: 'row' }
     ]
     const contentContainerStyle = {
-      paddingLeft: 16,
+      paddingLeft: oneColumn ? 16 : 8,
       paddingTop: 8,
       paddingBottom: 8
     }
