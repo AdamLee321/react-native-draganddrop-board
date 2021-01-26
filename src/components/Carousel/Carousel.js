@@ -112,7 +112,7 @@ class Carousel extends Component {
 
   getActiveItem = (offset) => {
     const center = this.getCenter(offset)
-    const centerOffset = 20
+    const centerOffset = 0
 
     for (let i = 0; i < this.positions.length; i += 1) {
       const { start, end } = this.positions[i]
