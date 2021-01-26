@@ -23,7 +23,7 @@ import {
   SumWrapper
 } from './Column.styled'
 
-const COLUMN_WIDTH = deviceWidth - 40
+const COLUMN_WIDTH = 0.85 * deviceWidth
 const PADDING = 32
 const ONE_COLUMN_WIDTH = deviceWidth - PADDING
 
@@ -192,7 +192,7 @@ class Column extends React.Component {
         onLayout={this.updateColumnWithLayout}
         columnHeight={columnHeight}
         width={oneColumn ? ONE_COLUMN_WIDTH : columnWidth?columnWidth:COLUMN_WIDTH}
-        marginRight={oneColumn ? 0 : 20}
+        marginRight={oneColumn ? 0 : 8}
       >
         <RowContainer>
           <Paragraph
